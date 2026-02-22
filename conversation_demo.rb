@@ -22,8 +22,8 @@ ENV['SMARTRAG_DB_PASSWORD'] ||= 'rag_pwd'
 ENV['EMBEDDING_MODEL'] = 'qwen3-embedding'
 
 # 硅基流动 API 配置
-SILICON_FLOW_API_KEY = 'sk-qbmqiwoyvswtyzrdjrojkaplerhwcwoloulqlxgcjfjxpmpw'
-SILICON_FLOW_ENDPOINT = 'https://api.siliconflow.cn/v1/chat/completions'
+SILICON_FLOW_API_KEY = ENV['SILICON_FLOW_API_KEY']
+SILICON_FLOW_ENDPOINT = ENV['SILICON_FLOW_ENDPOINT']
 SILICON_FLOW_MODEL = 'Pro/moonshotai/Kimi-K2.5'
 
 # 加载依赖
@@ -58,6 +58,8 @@ puts "=" * 80
 
 puts "\n📚 初始化 SmartRAG..."
 
+null_logger = Logger.new(File.open(File::NULL, 'w'))
+
 rag_config = {
   database: {
     adapter: 'postgresql',
@@ -77,13 +79,13 @@ rag_config = {
   # Embedding 配置 - 禁用（轨迹流动暂不支持 embedding）
   embedding: {
     config_path: '/home/mlf/smart_ai/smart_rag/config/llm_config.yml'
-  }
+  },
+  # 禁用所有 SmartRAG 内部日志输出
+  logger: null_logger
 }
 
 begin
   rag = SmartRAG::SmartRAG.new(rag_config)
-  rag.logger = Logger.new(STDOUT)
-  rag.logger.level = Logger::WARN  # 减少日志输出
 
   stats = rag.statistics
   puts "✓ SmartRAG 初始化成功"
