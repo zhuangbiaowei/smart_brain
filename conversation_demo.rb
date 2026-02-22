@@ -19,6 +19,7 @@ ENV['SMARTRAG_DB_PORT'] ||= '5432'
 ENV['SMARTRAG_DB_NAME'] ||= 'smart_rag_development'
 ENV['SMARTRAG_DB_USER'] ||= 'rag_user'
 ENV['SMARTRAG_DB_PASSWORD'] ||= 'rag_pwd'
+ENV['EMBEDDING_MODEL'] = 'qwen3-embedding'
 
 # 硅基流动 API 配置
 SILICON_FLOW_API_KEY = 'sk-qbmqiwoyvswtyzrdjrojkaplerhwcwoloulqlxgcjfjxpmpw'
@@ -75,11 +76,7 @@ rag_config = {
   },
   # Embedding 配置 - 禁用（轨迹流动暂不支持 embedding）
   embedding: {
-    provider: 'disabled',
-    api_key: 'none',
-    endpoint: '',
-    model: 'none',
-    dimensions: 0
+    config_path: '/home/mlf/smart_ai/smart_rag/config/llm_config.yml'
   }
 }
 
