@@ -1,0 +1,101 @@
+# 操作系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE 和编辑器
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.iml
+
+# Ruby 相关
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# RVM 和 rbenv
+.rvmrc
+.rbenv-version
+.ruby-version
+.ruby-gemset
+
+# Bundler
+.bundle/
+vendor/bundle
+vendor/cache/
+vendor/ruby/
+
+# 环境变量和敏感配置
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+config/*.yml
+!config/example.yml
+
+# 日志文件
+/log/*.log
+/log/*.log.*
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 数据库
+*.sqlite3
+*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/schema.rb
+/db/structure.sql
+/db/seeds.rb.bak
+
+# 缓存和临时文件
+/tmp/
+/cache/
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# 测试覆盖率
+/coverage/
+/.rspec_status
+/simplecov
+
+# 文档生成
+/doc/
+/rdoc/
+/yardoc/
+.yardoc/
+
+# 构建产物
+/build/
+/dist/
+
+# Puma
+/tmp/pids/
+/tmp/sockets/
+/tmp/puma/
+
+# 其他
+*.orig
+*.rej
+.keep
+*.dump
