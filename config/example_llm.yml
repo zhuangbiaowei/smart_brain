@@ -1,0 +1,16 @@
+adapters:
+  openai: OpenAIAdapter
+logger_file: ./log/prompt.log
+llms:
+  ollama:
+    adapter: openai
+    url: http://localhost:11434/
+    default_model: qwen3
+  silicon_flow:
+    adapter: openai
+    url: https://api.siliconflow.cn/
+    api_key: sk-qbmqiwoyvswtyzrdjrojkaplerhwcwoloulqlxgcjfjxpmpw
+    default_model: Pro/moonshotai/Kimi-K2.5
+default_llm: silicon_flow
+worker_path: ./workers
+template_path: ./templates
