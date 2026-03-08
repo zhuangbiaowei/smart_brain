@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'time'
+require_relative 'smart_brain/version'
 require_relative 'smart_brain/configuration'
 require_relative 'smart_brain/runtime'
 
