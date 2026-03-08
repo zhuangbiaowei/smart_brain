@@ -8,6 +8,7 @@ Thumbs.db
 # IDE 和编辑器
 .vscode/
 .idea/
+.claude/
 *.sublime-project
 *.sublime-workspace
 .project
