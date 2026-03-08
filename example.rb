@@ -10,14 +10,14 @@ require_relative 'lib/smart_brain'
 require_relative 'lib/smart_brain/adapters/smart_rag/direct_client'
 
 begin
-  require '/home/mlf/smart_ai/smart_rag/lib/smart_rag'
+  require 'smart_rag'
 rescue LoadError => e
   warn "SmartRAG load failed: #{e.message}"
   warn 'Please install SmartRAG dependencies (especially sequel/pg) before running this example.'
   exit 1
 end
 
-rag_config = SmartRAG::Config.load('/home/mlf/smart_ai/smart_rag/config/smart_rag.yml')
+rag_config = SmartRAG::Config.load("./config/smart_rag.yml")
 # SmartRAG config may include database.extensions with pgvector.
 # For Sequel, pgvector should be loaded globally via Sequel.extension.
 db_cfg = (rag_config[:database] || {}).dup

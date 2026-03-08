@@ -14,7 +14,7 @@ require 'logger'
 require 'json'
 
 # 环境变量配置 - 使用轨迹流动 Kimi-K2.5 模型
-ENV['SMARTRAG_DB_HOST'] ||= 'localhost'
+ENV['SMARTRAG_DB_HOST'] ||= '192.168.1.48'
 ENV['SMARTRAG_DB_PORT'] ||= '5432'
 ENV['SMARTRAG_DB_NAME'] ||= 'smart_rag_development'
 ENV['SMARTRAG_DB_USER'] ||= 'rag_user'
@@ -23,7 +23,7 @@ ENV['EMBEDDING_MODEL'] = 'qwen3-embedding'
 
 # 硅基流动 API 配置
 SILICON_FLOW_API_KEY = ENV['SILICON_FLOW_API_KEY']
-SILICON_FLOW_ENDPOINT = ENV['SILICON_FLOW_ENDPOINT']
+SILICON_FLOW_ENDPOINT = "https://api.siliconflow.cn/v1/"
 SILICON_FLOW_MODEL = 'Pro/moonshotai/Kimi-K2.5'
 
 # 加载依赖
@@ -41,7 +41,7 @@ rescue LoadError
 end
 
 begin
-  require '/home/mlf/smart_ai/smart_rag/lib/smart_rag'
+  require 'smart_rag'
 rescue LoadError => e
   warn "SmartRAG load failed: #{e.message}"
   exit 1
@@ -63,7 +63,7 @@ null_logger = Logger.new(File.open(File::NULL, 'w'))
 rag_config = {
   database: {
     adapter: 'postgresql',
-    host: ENV['SMARTRAG_DB_HOST'] || 'localhost',
+    host: ENV['SMARTRAG_DB_HOST'] || '192.168.1.48',
     port: (ENV['SMARTRAG_DB_PORT'] || '5432').to_i,
     database: ENV['SMARTRAG_DB_NAME'] || 'smart_rag_development',
     user: ENV['SMARTRAG_DB_USER'] || 'rag_user',
@@ -78,7 +78,7 @@ rag_config = {
   },
   # Embedding 配置 - 禁用（轨迹流动暂不支持 embedding）
   embedding: {
-    config_path: '/home/mlf/smart_ai/smart_rag/config/llm_config.yml'
+    config_path: File.expand_path('./config/llm_config.yml', __dir__)
   },
   # 禁用所有 SmartRAG 内部日志输出
   logger: null_logger

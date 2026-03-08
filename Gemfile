@@ -9,12 +9,15 @@ gem 'faraday', '~> 2.11'
 gem 'oj', '~> 3.16'
 gem 'dry-struct', '~> 1.7'
 gem 'dry-validation', '~> 1.11'
+gem 'numo-narray', git: 'https://github.com/ruby-numo/numo-narray.git', ref: '95c05257349b954c027c2284834408736244662a'
 
 gem "rdbg", "~> 0.1.0"
 
 gem "debug", "~> 1.11"
 
 gem "smart_agent", "~> 0.2.3"
+
+gem "smart_rag", "~> 0.1.0"
 
 gem "sinatra", "~> 4.2"
 

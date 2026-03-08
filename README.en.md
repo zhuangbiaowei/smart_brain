@@ -101,10 +101,10 @@ SmartBrain.configure(smart_rag_client: client)
 ### 3) DirectClient (used in `example.rb`)
 
 ```ruby
-require '/home/mlf/smart_ai/smart_rag/lib/smart_rag'
+require 'smart_rag'
 require_relative 'lib/smart_brain/adapters/smart_rag/direct_client'
 
-rag_config = SmartRAG::Config.load('/home/mlf/smart_ai/smart_rag/config/smart_rag.yml')
+rag_config = SmartRAG::Config.load(ENV.fetch('SMARTRAG_CONFIG_PATH'))
 rag = SmartRAG::SmartRAG.new(rag_config)
 client = SmartBrain::Adapters::SmartRag::DirectClient.new(rag: rag)
 
